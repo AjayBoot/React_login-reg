@@ -8,7 +8,6 @@ const Dashboard = ({setAuth}) => {
 
     try{
 
-      /*
       const response = await fetch(
         "http://localhost:5000/dashboard/",{
           method: "GET",
@@ -19,7 +18,6 @@ const Dashboard = ({setAuth}) => {
       const parseRes = await response.json();
 
       setName(parseRes.user_name);
-      */
     }
     catch(err) {
 

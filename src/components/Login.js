@@ -24,24 +24,31 @@ const Login = ({setAuth}) => {
 
     try{
 
-      /* Send info to server to authenticate
+      // Send info to server to authenticate
 
       const body = {email, password}
       
       const response = await fetch("http://localhost:5000/auth/login",{
       method:"POST",
       headers: {"Content-Type" : "application/json"},
-      bosy: JSON.stringify(body)  
+      body: JSON.stringify(body)  
     });
 
 
       const parseRes = await response.json();
 
-      //Locally store token and update authentication state
+      //Checks if token was recieved (valid input)
+      if( parseRes.token ){
+
+       //Locally store token and update authentication state
       localStorage.setItem("token", parseRes.token);
-      setAuth(true);
-      */
-     
+      setAuth(true);     
+      }
+      else{
+
+        console.log(parseRes)
+      }
+
     } catch(err){
 
       console.err(err.message)

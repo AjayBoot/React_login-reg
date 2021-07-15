@@ -25,15 +25,15 @@ function App() {
 
     try{
 
-      /*
-      const response = await fetch("http://localhost:5000/auth/is-verify", {
+      const response = await fetch("http://localhost:5000/auth/verify", {
         method: "GET",
         headers: {token : localStorage.token }
       });
 
+      const parseRes = await response.json();
+
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false)
 
-      */
     }
     catch(err){
 
