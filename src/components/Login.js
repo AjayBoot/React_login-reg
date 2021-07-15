@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 
 const Login = ({setAuth}) => {
 
+  //Hook for needed information from the user for login
   const [inputs, setInputs] = useState({
     email:"",
     password:""
@@ -10,18 +11,20 @@ const Login = ({setAuth}) => {
 
   const {email, password} = inputs
 
+  //Update parameters whenever user updates text field
   const onChange = (e) => {
 
     setInputs({...inputs, [e.target.name]: e.target.value});
   };
 
+  //When user attempts to log-in, authenticate with server and get token
   const onSubmitForm = async(e) => {
 
     e.preventDefault()
 
     try{
 
-      /* fetch info to get token
+      /* Send info to server to authenticate
 
       const body = {email, password}
       
@@ -34,11 +37,11 @@ const Login = ({setAuth}) => {
 
       const parseRes = await response.json();
 
+      //Locally store token and update authentication state
       localStorage.setItem("token", parseRes.token);
-
       setAuth(true);
-
       */
+     
     } catch(err){
 
       console.err(err.message)

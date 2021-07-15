@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 const Register = ({setAuth}) => {
 
 
+  //Hook for needed information from the user for registration
   const [inputs, setInputs] = useState({
     email: "", 
     password: "", 
@@ -12,10 +13,12 @@ const Register = ({setAuth}) => {
 
   const {email, password, name} = inputs;
 
+  //Update parameters whenever user updates text field
   const onChange = (e) => {
     setInputs({...inputs, [e.target.name] : e.target.value })
   }
 
+  //When user registers, update server and get token
   const onSubmitForm = async e => {
     e.preventDefault()
   
@@ -24,7 +27,7 @@ const Register = ({setAuth}) => {
       //information from inputs
       const body = {email, password, name}
 
-      /*fetch request
+      /*Update server with user's registration information
       const response = await fetch("http://localhost:5000/auth/register", {
       method: "POST", 
       headers: {"Content-Type" : "application/json0"},
@@ -32,14 +35,12 @@ const Register = ({setAuth}) => {
       });
 
 
-      //response in JSON format
+      //token response from server
       const parseRes = await response.json()
 
+      //Locally store token and update authentication state
       localStorage.setItem("token", parseRes.token)
       */
-
-      localStorage.setItem("token", "success");
-
       setAuth(true);
 
     }
